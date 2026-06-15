@@ -3,12 +3,12 @@ import path from "node:path";
 import process from "node:process";
 
 const root = process.cwd();
-const dist = path.join(root, "dist");
+const output = path.join(root, "public");
 const checkOnly = process.argv.includes("--check-only");
 
 const htmlFiles = ["index.html", "message.html"];
 const staticFiles = ["styles.css"];
-const staticDirs = ["assets"];
+const referencedAssets = new Set();
 const forbiddenText = [
   {
     value: "https://forms.gle/18Y4WUax4FM4wuzQ7",
@@ -104,6 +104,10 @@ async function verifyHtmlFile(file) {
       failures.push(`${file}: ${reference} が見つかりません。`);
     }
 
+    if (localPath && path.relative(root, localPath).startsWith(`assets${path.sep}`)) {
+      referencedAssets.add(path.relative(root, localPath));
+    }
+
     const hash = reference.split("#")[1];
     if (hash && reference.endsWith(`#${hash}`)) {
       const targetFile = reference.split("#")[0] || file;
@@ -119,6 +123,28 @@ async function verifyHtmlFile(file) {
   }
 }
 
+async function verifyCssFile(file) {
+  const cssPath = path.join(root, file);
+  const css = await readFile(cssPath, "utf8");
+  const urlPattern = /url\((["']?)([^"')]+)\1\)/g;
+
+  for (const match of css.matchAll(urlPattern)) {
+    const reference = match[2].trim();
+    if (!reference || reference.startsWith("#") || isExternalReference(reference)) {
+      continue;
+    }
+
+    const localPath = normalizeLocalPath(file, reference);
+    if (localPath && !(await exists(localPath))) {
+      failures.push(`${file}: ${reference} が見つかりません。`);
+    }
+
+    if (localPath && path.relative(root, localPath).startsWith(`assets${path.sep}`)) {
+      referencedAssets.add(path.relative(root, localPath));
+    }
+  }
+}
+
 async function verifyRequiredFiles() {
   for (const file of [...htmlFiles, ...staticFiles]) {
     if (!(await exists(path.join(root, file)))) {
@@ -126,10 +152,8 @@ async function verifyRequiredFiles() {
     }
   }
 
-  for (const dir of staticDirs) {
-    if (!(await exists(path.join(root, dir)))) {
-      failures.push(`${dir}/ が見つかりません。`);
-    }
+  if (!(await exists(path.join(root, "assets")))) {
+    failures.push("assets/ が見つかりません。");
   }
 }
 
@@ -139,6 +163,12 @@ async function build() {
   for (const file of htmlFiles) {
     if (await exists(path.join(root, file))) {
       await verifyHtmlFile(file);
+    }
+  }
+
+  for (const file of staticFiles) {
+    if (await exists(path.join(root, file)) && file.endsWith(".css")) {
+      await verifyCssFile(file);
     }
   }
 
@@ -155,18 +185,18 @@ async function build() {
     return;
   }
 
-  await rm(dist, { recursive: true, force: true });
-  await mkdir(dist, { recursive: true });
+  await rm(output, { recursive: true, force: true });
+  await mkdir(output, { recursive: true });
 
   for (const file of [...htmlFiles, ...staticFiles]) {
-    await copyRecursive(path.join(root, file), path.join(dist, file));
+    await copyRecursive(path.join(root, file), path.join(output, file));
   }
 
-  for (const dir of staticDirs) {
-    await copyRecursive(path.join(root, dir), path.join(dist, dir));
+  for (const asset of referencedAssets) {
+    await copyRecursive(path.join(root, asset), path.join(output, asset));
   }
 
-  console.log("Build completed: dist/");
+  console.log("Build completed: public/");
 }
 
 build().catch((error) => {

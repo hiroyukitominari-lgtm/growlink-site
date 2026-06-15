@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "verify": "node scripts/build.mjs --check-only",
-    "preview": "python3 -m http.server 3000 --directory dist"
+    "preview": "python3 -m http.server 3000 --directory public"
   },
   "engines": {
     "node": ">=18"
