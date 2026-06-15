@@ -30,12 +30,12 @@ npm run preview
 Vercelにインポートする場合は、以下の設定でデプロイできます。
 
 - Framework Preset: `Other`
-- Build Command: `npm run build`
-- Output Directory: `.`
+- Build Command: 空欄
+- Output Directory: 空欄
 - Install Command: デフォルトのままで問題ありません
 
-`vercel.json` に同じ設定を入れているため、通常はVercel側で自動的に認識されます。
-404が出る場合は、VercelのProject SettingsでOutput Directoryが `.` になっているか確認してください。
+`vercel.json` で `index.html`、`message.html`、`styles.css`、`assets/` を静的ファイルとして配信するよう明示しています。
+404が出る場合は、VercelのProject SettingsでBuild CommandとOutput Directoryが空欄になっているか確認してください。
 
 ## 環境変数
 

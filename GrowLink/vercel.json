@@ -1,16 +1,35 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": ".",
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/",
-      "destination": "/index.html"
+      "src": "index.html",
+      "use": "@vercel/static"
     },
     {
-      "source": "/message",
-      "destination": "/message.html"
+      "src": "message.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "styles.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "assets/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/message",
+      "dest": "/message.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ]
 }
