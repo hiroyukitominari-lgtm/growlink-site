@@ -1,0 +1,14 @@
+{
+  "name": "growlink-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "verify": "node scripts/build.mjs --check-only",
+    "preview": "python3 -m http.server 3000 --directory dist"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
