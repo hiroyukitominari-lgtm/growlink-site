@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.mjs",
+    "build": "node scripts/build.mjs --check-only",
     "verify": "node scripts/build.mjs --check-only",
-    "preview": "python3 -m http.server 3000 --directory public"
+    "preview": "python3 -m http.server 3000"
   },
   "engines": {
     "node": ">=18"
