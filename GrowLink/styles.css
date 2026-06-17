@@ -1,15 +1,16 @@
 :root {
-  --ink: #13251f;
-  --muted: #5e6e68;
-  --deep-green: #0f4d3b;
-  --navy: #193452;
-  --fresh-green: #7ccf86;
-  --soft-green: #eef8f1;
-  --pale-blue: #eef6fb;
+  --ink: #111513;
+  --muted: #5c625f;
+  --deep-green: #06412f;
+  --navy: #10243f;
+  --fresh-green: #74c476;
+  --soft-green: #f2f7f1;
+  --pale-blue: #f5f8f9;
   --white: #ffffff;
-  --line: #dfe9e3;
-  --shadow: 0 20px 60px rgba(19, 37, 31, 0.12);
-  --soft-shadow: 0 10px 28px rgba(19, 37, 31, 0.08);
+  --line: #e4e7e5;
+  --black: #0b0d0c;
+  --shadow: 0 18px 44px rgba(17, 21, 19, 0.1);
+  --soft-shadow: 0 8px 22px rgba(17, 21, 19, 0.06);
 }
 
 * {
@@ -24,8 +25,8 @@ body {
   margin: 0;
   color: var(--ink);
   background: var(--white);
-  font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Yu Gothic Medium", "Hiragino Sans", Meiryo, sans-serif;
-  line-height: 1.8;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Yu Gothic Medium", Meiryo, sans-serif;
+  line-height: 1.78;
 }
 
 a {
@@ -54,11 +55,11 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  min-height: 72px;
-  padding: 14px clamp(18px, 4vw, 56px);
-  background: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid rgba(223, 233, 227, 0.82);
-  backdrop-filter: blur(18px);
+  min-height: 76px;
+  padding: 16px clamp(18px, 4vw, 56px);
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid rgba(228, 231, 229, 0.96);
+  backdrop-filter: blur(14px);
 }
 
 .brand {
@@ -81,9 +82,9 @@ p {
   align-items: center;
   justify-content: center;
   gap: clamp(14px, 2.2vw, 28px);
-  color: #465b54;
-  font-size: 14px;
-  font-weight: 700;
+  color: #2f3633;
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .nav a,
@@ -102,8 +103,9 @@ p {
   align-items: center;
   justify-content: center;
   min-height: 54px;
-  border-radius: 999px;
-  font-weight: 800;
+  border-radius: 2px;
+  font-weight: 900;
+  letter-spacing: 0;
   line-height: 1.25;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
@@ -112,7 +114,7 @@ p {
   min-width: 154px;
   padding: 12px 20px;
   color: var(--white);
-  background: var(--deep-green);
+  background: var(--black);
   font-size: 14px;
 }
 
@@ -128,14 +130,14 @@ p {
 
 .button.primary {
   color: var(--white);
-  background: var(--deep-green);
-  box-shadow: 0 14px 30px rgba(15, 77, 59, 0.25);
+  background: var(--black);
+  box-shadow: 0 14px 30px rgba(17, 21, 19, 0.18);
 }
 
 .button.secondary {
-  color: var(--navy);
+  color: var(--ink);
   background: var(--white);
-  border: 1px solid var(--line);
+  border: 1px solid #cfd5d1;
 }
 
 .button.line {
@@ -145,21 +147,21 @@ p {
 
 .section {
   position: relative;
-  padding: clamp(72px, 10vw, 124px) 0;
+  padding: clamp(78px, 10vw, 132px) 0;
 }
 
 .container {
-  width: min(1120px, calc(100% - 40px));
+  width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
 }
 
 .hero {
-  min-height: 82vh;
+  min-height: 88vh;
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding-top: 116px;
-  padding-bottom: 52px;
+  padding-top: 118px;
+  padding-bottom: 58px;
 }
 
 .empathy-layout {
@@ -177,7 +179,7 @@ p {
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   background: var(--white);
   box-shadow: var(--shadow);
 }
@@ -211,15 +213,15 @@ p {
 
 .hero-overlay {
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.9) 30%, rgba(255, 255, 255, 0.44) 58%, rgba(255, 255, 255, 0.06) 100%),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.93) 0%, rgba(255, 255, 255, 0) 26%);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.86) 28%, rgba(255, 255, 255, 0.28) 62%, rgba(255, 255, 255, 0.02) 100%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0) 28%);
 }
 
 .hero-inner {
   position: relative;
   z-index: 1;
-  width: min(680px, calc(100% - 40px));
-  margin-left: max(20px, calc((100vw - 1120px) / 2));
+  width: min(720px, calc(100% - 40px));
+  margin-left: max(20px, calc((100vw - 1180px) / 2));
 }
 
 .hero-logo {
@@ -234,17 +236,17 @@ p {
 .section-label,
 .plan-kicker {
   color: var(--deep-green);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0;
+  letter-spacing: 0.08em;
 }
 
 .hero h1 {
-  max-width: 640px;
+  max-width: 700px;
   margin-bottom: 22px;
   color: var(--ink);
-  font-size: clamp(40px, 6vw, 72px);
-  line-height: 1.12;
+  font-size: clamp(44px, 6.8vw, 86px);
+  line-height: 1.03;
   letter-spacing: 0;
 }
 
@@ -274,16 +276,88 @@ p {
 .hero-points li {
   padding: 8px 13px;
   border: 1px solid rgba(15, 77, 59, 0.16);
-  border-radius: 999px;
+  border-radius: 2px;
   color: #2b4b40;
   background: rgba(255, 255, 255, 0.76);
   font-size: 13px;
   font-weight: 700;
 }
 
+.campaign-section {
+  padding: 18px clamp(16px, 3vw, 34px) 0;
+  background: var(--white);
+}
+
+.campaign-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.campaign-card {
+  position: relative;
+  display: block;
+  min-height: clamp(300px, 34vw, 460px);
+  overflow: hidden;
+  color: var(--white);
+  background: var(--black);
+}
+
+.campaign-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.campaign-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 20%, rgba(0, 0, 0, 0.64) 100%);
+}
+
+.campaign-card div {
+  position: absolute;
+  z-index: 1;
+  right: 24px;
+  bottom: 24px;
+  left: 24px;
+}
+
+.campaign-card span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.campaign-card h2 {
+  margin: 0 0 8px;
+  color: var(--white);
+  font-size: clamp(25px, 3vw, 38px);
+  line-height: 1.15;
+}
+
+.campaign-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.campaign-card:hover img {
+  transform: scale(1.04);
+  opacity: 1;
+}
+
 .trust-strip {
-  padding: 18px 0;
-  background: var(--deep-green);
+  padding: 18px 0 0;
+  background: var(--white);
 }
 
 .trust-grid {
@@ -298,9 +372,9 @@ p {
   gap: 12px;
   min-height: 70px;
   padding: 14px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--white);
 }
 
 .trust-grid span {
@@ -310,7 +384,7 @@ p {
   height: 34px;
   place-items: center;
   border-radius: 50%;
-  color: var(--deep-green);
+  color: var(--white);
   background: var(--fresh-green);
   font-size: 12px;
   font-weight: 900;
@@ -318,7 +392,7 @@ p {
 
 .trust-grid p {
   margin: 0;
-  color: var(--white);
+  color: var(--ink);
   font-size: 14px;
   font-weight: 800;
   line-height: 1.55;
@@ -339,8 +413,8 @@ p {
 h2 {
   margin-bottom: 18px;
   color: var(--ink);
-  font-size: clamp(28px, 4vw, 48px);
-  line-height: 1.35;
+  font-size: clamp(30px, 4.4vw, 56px);
+  line-height: 1.22;
   letter-spacing: 0;
 }
 
@@ -386,9 +460,9 @@ h3 {
 .teacher-card,
 .faq details {
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   background: var(--white);
-  box-shadow: var(--soft-shadow);
+  box-shadow: none;
 }
 
 .value-item,
@@ -404,7 +478,7 @@ h3 {
   width: 48px;
   height: 48px;
   margin-bottom: 22px;
-  border-radius: 50%;
+  border-radius: 2px;
   color: var(--white);
   background: var(--navy);
   font-size: 14px;
@@ -417,6 +491,9 @@ h3 {
 
 .learn-grid article {
   min-height: 248px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .photo-showcase {
@@ -432,9 +509,9 @@ h3 {
 .photo-card {
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   background: var(--white);
-  box-shadow: var(--shadow);
+  box-shadow: none;
 }
 
 .photo-card img {
@@ -476,11 +553,11 @@ h3 {
   gap: 26px;
   align-items: center;
   padding: 24px 0;
-  border-bottom: 1px solid rgba(15, 77, 59, 0.18);
+  border-bottom: 1px solid rgba(17, 21, 19, 0.16);
 }
 
 .timeline-item:first-child {
-  border-top: 1px solid rgba(15, 77, 59, 0.18);
+  border-top: 1px solid rgba(17, 21, 19, 0.16);
 }
 
 .timeline-item span {
@@ -523,7 +600,7 @@ h3 {
   left: 0;
   right: 0;
   height: 8px;
-  background: linear-gradient(90deg, var(--fresh-green), var(--deep-green));
+  background: var(--black);
 }
 
 .teacher-photo {
@@ -533,19 +610,19 @@ h3 {
   object-fit: cover;
   object-position: center;
   margin-bottom: 18px;
-  border: 4px solid var(--white);
+  border: 1px solid var(--line);
   border-radius: 50%;
   background: linear-gradient(135deg, var(--deep-green), var(--navy));
-  box-shadow: 0 12px 26px rgba(15, 77, 59, 0.2);
+  box-shadow: none;
 }
 
 .teacher-role {
   display: inline-flex;
   margin-bottom: 10px;
   padding: 5px 12px;
-  border-radius: 999px;
-  color: var(--deep-green);
-  background: var(--soft-green);
+  border-radius: 2px;
+  color: var(--white);
+  background: var(--deep-green);
   font-size: 13px;
   font-weight: 900;
 }
@@ -559,15 +636,17 @@ h3 {
 }
 
 .featured-plan {
-  border-color: rgba(124, 207, 134, 0.85);
-  box-shadow: var(--shadow);
+  border-color: var(--black);
+  box-shadow: inset 0 0 0 2px var(--black);
 }
 
 .text-link {
   display: inline-flex;
   margin-top: 8px;
-  color: var(--deep-green);
+  color: var(--black);
   font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 .story-list {
@@ -639,7 +718,7 @@ h3 {
   margin: 0;
   padding: 30px;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   background: var(--white);
   box-shadow: var(--shadow);
   text-align: center;
@@ -667,7 +746,7 @@ h3 {
 .message-letter {
   padding: clamp(28px, 5vw, 54px);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   background: var(--white);
   box-shadow: var(--shadow);
 }
@@ -739,7 +818,7 @@ h3 {
 
 .line-banner:hover {
   transform: translateY(-2px);
-  filter: drop-shadow(0 16px 28px rgba(15, 77, 59, 0.18));
+  filter: drop-shadow(0 16px 28px rgba(17, 21, 19, 0.16));
 }
 
 .line-banner img {
@@ -798,6 +877,7 @@ h3 {
   .learn-grid,
   .plan-grid,
   .photo-grid,
+  .campaign-grid,
   .feature-list,
   .teacher-grid,
   .trust-grid,
@@ -806,6 +886,10 @@ h3 {
   .empathy-layout,
   .message-page-layout {
     grid-template-columns: 1fr;
+  }
+
+  .campaign-card {
+    min-height: 360px;
   }
 
   .learn-grid article {
@@ -952,7 +1036,7 @@ h3 {
   .faq details,
   .message-letter,
   .message-profile {
-    border-radius: 8px;
+    border-radius: 2px;
   }
 
   .message-hero {
